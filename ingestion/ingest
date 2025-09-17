@@ -1,0 +1,84 @@
+import re
+import json
+import pandas as pd
+from pathlib import Path
+from langchain.text_splitter import CharacterTextSplitter
+from pypdf import PdfReader
+
+# ---- Directories ----
+DATA_DIR = Path(".")               # root of repo
+OUTPUT_DIR = Path("./processed")   # processed output folder
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+
+# ---- Cleaning ----
+def clean_text(text: str) -> str:
+    """Remove HTML tags, special characters, and extra spaces."""
+    if not text:
+        return ""
+    text = re.sub(r"<[^>]+>", " ", text)  # remove HTML
+    text = re.sub(r"[^a-zA-Z0-9.,?!:;()\-\s]", " ", text)  # keep only normal chars
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
+# ---- Chunking ----
+def chunk_text(docs: list[str], chunk_size: int = 500, overlap: int = 50) -> list[str]:
+    """Split docs into overlapping chunks using LangChain."""
+    splitter = CharacterTextSplitter(
+        separator=" ",
+        chunk_size=chunk_size,
+        chunk_overlap=overlap,
+        length_function=len
+    )
+    return splitter.split_text(" ".join(docs))
+
+
+# ---- Save ----
+def save_chunks(chunks: list[str], output_name: str):
+    """Save chunks to CSV + JSON for later use."""
+    df = pd.DataFrame({"chunk_id": range(len(chunks)), "text": chunks})
+    df.to_csv(OUTPUT_DIR / f"{output_name}.csv", index=False)
+
+    with open(OUTPUT_DIR / f"{output_name}.json", "w", encoding="utf-8") as f:
+        json.dump(df.to_dict(orient="records"), f, indent=2, ensure_ascii=False)
+
+
+# ---- Pipeline ----
+def run_pipeline(raw_docs: list[str], output_name: str = "chunks"):
+    cleaned = [clean_text(doc) for doc in raw_docs if doc]
+    chunks = chunk_text(cleaned)
+    save_chunks(chunks, output_name)
+    return chunks
+
+
+# ---- Main Execution ----
+if __name__ == "__main__":
+    raw_docs = []
+
+    for file in DATA_DIR.glob("*"):
+        if file.is_dir():
+            continue
+        if file.suffix.lower() not in [".txt", ".csv", ".pdf"]:
+            print(f"⏭ Skipping unsupported file: {file.name}")
+            continue
+
+        print(f"🔍 Reading {file.name}")
+        if file.suffix.lower() == ".txt":
+            raw_docs.append(file.read_text(encoding="utf-8"))
+
+        elif file.suffix.lower() == ".csv":
+            df = pd.read_csv(file)
+            raw_docs.extend(df.astype(str).values.flatten().tolist())
+
+        elif file.suffix.lower() == ".pdf":
+            reader = PdfReader(str(file))
+            for page in reader.pages:
+                text = page.extract_text()
+                if text:
+                    raw_docs.append(text)
+                else:
+                    print(f"⚠️ No extractable text in {file.name} (might be scanned).")
+
+    chunks = run_pipeline(raw_docs, "car_data")
+    print(f"✅ Processed {len(raw_docs)} docs into {len(chunks)} chunks.")

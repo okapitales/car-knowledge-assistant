@@ -1,0 +1,14 @@
+# Ignore Python environments
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS junk
+.DS_Store
+
+# Generated data
+chroma_db/
+processed/

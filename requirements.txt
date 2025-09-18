@@ -18,3 +18,8 @@ pypdf>=4.2.0
 
 # Testing
 pytest>=8.2.0
+
+#LLMs Libraries
+transformers>=4.40.0
+accelerate>=0.27.0
+torch>=2.2.0

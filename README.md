@@ -6,7 +6,7 @@
 
 ## What is this project about?
 
-The Car Knowledge Assistant (CKA) is a **GenAI-driven knowledge tool** for the automotive sales and service process.  
+The Car Knowledge Assistant (CKA) is a **GenAI-driven knowledge tool** designed to support the automotive sales and service process.  
 It uses Retrieval-Augmented Generation (RAG) to pull answers from owner manuals, feature guides, FAQs, and dealer documentation.  
 
 The system can:
@@ -34,15 +34,64 @@ The result: **fewer escalations, faster conversations, and happier customers.**
 
 ---
 
-## Tech Stack Used
+## Tech Stack
 
-- **Python** (FastAPI for APIs, orchestration with LangGraph/LangChain)  
-- **Vector Database**: Chroma (local dev); supports FAISS, Pinecone, or Weaviate in production  
-- **LLM**: Anthropic Claude (configurable, pluggable)  
-- **Embeddings**: Sentence Transformers / Open-source models  
-- **Data Science Libraries**: NumPy, pandas, scikit-learn  
-- **Evaluation & Observability**: RAGAS, Langfuse/Langtrace  
-- **Version Control & CI/CD**: GitHub Actions  
+### ✅ Current Tech Stack (Implemented)
+
+- **API Framework**
+  - FastAPI (REST API endpoints)
+  - Pydantic (request/response validation)
+  - python-dotenv (environment variable management)
+
+- **LLMs & Embeddings**
+  - Anthropic Claude (primary LLM via LangChain integration)
+  - HuggingFace Transformers (Flan-T5, DistilBERT for zero-shot classification)
+  - Sentence-Transformers (e.g., `all-MiniLM-L6-v2` for embeddings)
+
+- **Vector Database**
+  - Chroma (local persistence for embeddings and retrieval)
+
+- **NLP Preprocessing**
+  - spaCy (`en_core_web_sm`) for lemmatization and stopword removal
+  - Regex-based cleaning for normalization
+
+- **LangChain Components**
+  - RetrievalQA pipeline
+  - PromptTemplate-based query formatting
+
+- **Utilities & Testing**
+  - pandas (CSV ingestion and processing)
+  - pytest (unit testing of ingestion and text-cleaning functions)
+
+---
+
+### 🚀 Future Enhancements (Planned)
+
+- **Containerization & Orchestration**
+  - Docker & docker-compose for local multi-service setups
+  - Kubernetes manifests for scalable deployment
+
+- **Observability & Evaluation**
+  - Langfuse or Langtrace for tracing and monitoring
+  - RAGAS for automated evaluation of retrieval quality
+
+- **Event & Streaming**
+  - Kafka integration for async telemetry and data pipelines
+
+- **CI/CD**
+  - GitHub Actions for automated builds, tests, and deployment
+
+- **Integrations**
+  - Salesforce (SOQL queries for CRM data)
+  - Dealer scheduling & CRM API connections
+
+- **Multi-Modal Features**
+  - Image-based input (e.g., dashboard/warning light recognition)
+  - Voice-based queries
+
+- **Edge/Offline Deployment**
+  - Kiosk/iPad-friendly deployments
+  - Offline embedding packs for low-connectivity environments
 
 ---
 
@@ -55,44 +104,9 @@ The result: **fewer escalations, faster conversations, and happier customers.**
 
 ---
 
-## Future Enhancements
-
-- **Containerization & Orchestration**
-  - Add **Docker** for portable local environments.  
-  - Add **docker-compose** for multi-service setup (API, retriever, vector DB, observability).  
-  - Deploy on **Kubernetes** with manifests for API gateway, retriever, vector DB, and autoscaling.  
-
-- **Advanced Features**
-  - Stronger **VIN-awareness** (software versions, region-specific features).  
-  - **Multi-modal support** (images of dashboard/warning lights).  
-  - Inline **citations** linking back to official VW manuals.  
-  - Dealer system integration: service calendars, CRM, and part availability.  
-  - Automated content refresh pipelines for manuals/FAQs.  
-  - A/B pipelines for experimenting with different prompting or retrieval methods.  
-  - Offline/edge support for showroom iPads and kiosks.  
-
----
-
 ## License
 
-MIT License
+This project is open-source and available under the **MIT License**.  
+See the [LICENSE](./LICENSE) file for details.
 
-Copyright (c) 2025 Mujib Yunus
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights  
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell  
-copies of the Software, and to permit persons to whom the Software is  
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in  
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE  
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING  
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS  
-IN THE SOFTWARE.
+---

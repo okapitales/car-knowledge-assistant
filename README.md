@@ -1,9 +1,9 @@
-Car Knowledge Assistant (CKA)
+**Car Knowledge Assistant (CKA)
 
 An AI-powered Retrieval-Augmented Assistant that helps VW Sales Advisors and customers quickly understand vehicle features, diagnose issues, and streamline dealer handoffs.
 
-What is this project about?
-
+**What is this project about?
+**
 The Car Knowledge Assistant (CKA) is a GenAI-driven knowledge tool for the automotive sales and service process.
 It uses Retrieval-Augmented Generation (RAG) to pull answers from owner manuals, feature guides, FAQs, and dealer documentation.
 

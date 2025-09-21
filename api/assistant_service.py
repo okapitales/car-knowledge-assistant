@@ -89,8 +89,12 @@ def load_vectorstore():
 
     # ---- Prompt ----
     template = """
-    You are a helpful Volkswagen car assistant.
+    You are a helpful Volkswagen ID 4 car model assistant to a Sales person at a car dealership.
+    Sales Person needs to answer customer questions about the car.
     Use the following context to answer the user question.
+    Answer is concise and to the point.
+    No use of special characters or punctuation or new line characters.
+    No Page Numbers in the answer.
     If the answer is not in the context, say you don't know.
 
     Context: {context}

@@ -1,96 +1,78 @@
-**Car Knowledge Assistant (CKA)
+# Car Knowledge Assistant (CKA)
 
-An AI-powered Retrieval-Augmented Assistant that helps VW Sales Advisors and customers quickly understand vehicle features, diagnose issues, and streamline dealer handoffs.
+**An AI-powered Retrieval-Augmented Assistant that helps VW Sales Advisors and customers quickly understand vehicle features, diagnose issues, and streamline dealer handoffs.**
 
-**What is this project about?
-**
-The Car Knowledge Assistant (CKA) is a GenAI-driven knowledge tool for the automotive sales and service process.
-It uses Retrieval-Augmented Generation (RAG) to pull answers from owner manuals, feature guides, FAQs, and dealer documentation.
+---
+
+## What is this project about?
+
+The Car Knowledge Assistant (CKA) is a **GenAI-driven knowledge tool** for the automotive sales and service process.  
+It uses Retrieval-Augmented Generation (RAG) to pull answers from owner manuals, feature guides, FAQs, and dealer documentation.  
 
 The system can:
+- Provide **VIN-aware answers** tailored to a specific model/trim.
+- Ask clarification questions to refine user queries.
+- Summarize issues and generate a **Dealer Handoff Package** (chat summary + suspected issue + availability).
+- Keep responses grounded in official VW sources.
 
-Provide VIN-aware answers tailored to a specific model/trim.
+The result: **fewer escalations, faster conversations, and happier customers.**
 
-Ask clarification questions to refine user queries.
+---
 
-Summarize issues and generate a Dealer Handoff Package (chat summary + suspected issue + availability).
+## Why is it beneficial for VW Sales and the company?
 
-Keep responses grounded in official VW sources.
+**For Sales Advisors**
+- Instant answers about trim differences, features, or setup steps.
+- Less time spent searching manuals, more time selling.
+- Clearer communication with customers, boosting confidence in the brand.
 
-The result: fewer escalations, faster conversations, and happier customers.
+**For VW (Business Impact)**
+- Improves **sales experience and conversion rates**.
+- Reduces **support overhead** with accurate self-service.
+- Enhances **customer satisfaction (NPS)** by resolving confusion quickly.
+- Provides **analytics** on top customer questions, helping VW refine documentation and marketing.
 
-Why is it beneficial for VW Sales and the company?
+---
 
-For Sales Advisors
+## Tech Stack Used
 
-Instant answers about trim differences, features, or setup steps.
+- **Python** (FastAPI for APIs, orchestration with LangGraph/LangChain)  
+- **Vector Database**: Chroma (local dev); supports FAISS, Pinecone, or Weaviate in production  
+- **LLM**: Anthropic Claude (configurable, pluggable)  
+- **Embeddings**: Sentence Transformers / Open-source models  
+- **Data Science Libraries**: NumPy, pandas, scikit-learn  
+- **Evaluation & Observability**: RAGAS, Langfuse/Langtrace  
+- **Version Control & CI/CD**: GitHub Actions  
 
-Less time spent searching manuals, more time selling.
+---
 
-Clearer communication with customers, boosting confidence in the brand.
+## Current Status
 
-For VW (Business Impact)
+- Runs locally using Python/FastAPI.  
+- Vector database stored locally (no container orchestration yet).  
+- Focused on RAG, LLM orchestration, and sales-support use cases.  
+- **Docker/Kubernetes not implemented yet** due to GitHub Codespaces storage limits.  
 
-Improves sales experience and conversion rates.
+---
 
-Reduces support overhead with accurate self-service.
+## Future Enhancements
 
-Enhances customer satisfaction (NPS) by resolving confusion quickly.
+- **Containerization & Orchestration**
+  - Add **Docker** for portable local environments.  
+  - Add **docker-compose** for multi-service setup (API, retriever, vector DB, observability).  
+  - Deploy on **Kubernetes** with manifests for API gateway, retriever, vector DB, and autoscaling.  
 
-Provides analytics on top customer questions, helping VW refine documentation and marketing.
+- **Advanced Features**
+  - Stronger **VIN-awareness** (software versions, region-specific features).  
+  - **Multi-modal support** (images of dashboard/warning lights).  
+  - Inline **citations** linking back to official VW manuals.  
+  - Dealer system integration: service calendars, CRM, and part availability.  
+  - Automated content refresh pipelines for manuals/FAQs.  
+  - A/B pipelines for experimenting with different prompting or retrieval methods.  
+  - Offline/edge support for showroom iPads and kiosks.  
 
-Tech Stack Used
+---
 
-Python (FastAPI for APIs, orchestration with LangGraph/LangChain)
-
-Vector Database: Chroma (local dev); supports FAISS, Pinecone, or Weaviate in production
-
-LLM: Anthropic Claude (configurable, pluggable)
-
-Embeddings: Sentence Transformers / Open-source models
-
-Data Science Libraries: NumPy, pandas, scikit-learn
-
-Evaluation & Observability: RAGAS, Langfuse/Langtrace
-
-Version Control & CI/CD: GitHub Actions
-
-Current Status
-
-Runs locally using Python/FastAPI.
-
-Vector database stored locally (no container orchestration yet).
-
-Focused on RAG, LLM orchestration, and sales-support use cases.
-
-Docker/Kubernetes not implemented yet due to GitHub Codespaces storage limits.
-
-Future Enhancements
-
-Containerization & Orchestration
-
-Add Docker for portable local environments.
-
-Add docker-compose for multi-service setup (API, retriever, vector DB, observability).
-
-Deploy on Kubernetes with manifests for API gateway, retriever, vector DB, and autoscaling.
-
-Advanced Features
-
-Stronger VIN-awareness (software versions, region-specific features).
-
-Multi-modal support (images of dashboard/warning lights).
-
-Inline citations linking back to official VW manuals.
-
-Dealer system integration: service calendars, CRM, and part availability.
-
-Automated content refresh pipelines for manuals/FAQs.
-
-A/B pipelines for experimenting with different prompting or retrieval methods.
-
-Offline/edge support for showroom iPads and kiosks.
-
-License
+## License
 
 MIT (update if you plan to use another license).

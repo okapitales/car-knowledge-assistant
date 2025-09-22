@@ -1,4 +1,4 @@
-# Car Knowledge Assistant (CKA)
+# Car Knowledge Assistant (CKA) or Automotive Sales Knowledge (ASK)
 
 **An AI-powered Retrieval-Augmented Assistant that helps VW Sales Advisors and customers quickly understand vehicle features, diagnose issues, and streamline dealer handoffs.**
 

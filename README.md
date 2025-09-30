@@ -1,11 +1,11 @@
-# Car Knowledge Assistant (CKA) or Automotive Sales Knowledge (ASK)
+# Automotive Sales Knowledge (ASK)
 
 **An AI-powered Retrieval-Augmented Assistant that helps VW Sales Advisors and customers quickly understand vehicle features, diagnose issues, and streamline dealer handoffs.**
 
 ---
 ## Inspiration & Origin Story  
 
-The idea for the Car Knowledge Assistant (CKA), also called Automotive Sales Knowledge (ASK), came directly from a real customer experience.  
+The idea for the Automotive Sales Knowledge (ASK), came directly from a real customer experience.  
 
 In 2024, while shopping for a new VW Atlas, I visited multiple dealerships — 5 Volkswagen, 2 Toyota, and 2 Honda. Out of all these visits, only **one salesperson truly knew the product in depth.** Most sales advisors were either new to the job or had to pause and find someone else to answer even basic feature questions.  
 

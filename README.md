@@ -3,7 +3,25 @@
 **An AI-powered Retrieval-Augmented Assistant that helps VW Sales Advisors and customers quickly understand vehicle features, diagnose issues, and streamline dealer handoffs.**
 
 ---
+## Inspiration & Origin Story  
 
+The idea for the Car Knowledge Assistant (CKA), also called Automotive Sales Knowledge (ASK), came directly from a real customer experience.  
+
+In 2024, while shopping for a new VW Atlas, I visited multiple dealerships — 5 Volkswagen, 2 Toyota, and 2 Honda. Out of all these visits, only **one salesperson truly knew the product in depth.** Most sales advisors were either new to the job or had to pause and find someone else to answer even basic feature questions.  
+
+This led to **long waits, nervous salespeople, and frustrated customers** — the exact opposite of what a confident buying experience should feel like.  
+
+That’s when the idea struck: what if sales advisors had an **instant AI-powered assistant** built directly into the VW Dealer Community Cloud?  
+
+- Instead of scrambling for answers, a salesperson could get accurate, VIN-aware responses on the spot.  
+- Customers would feel reassured and informed, improving trust in both the advisor and the VW brand.  
+- VW itself would gain a powerful advantage by capturing **data on customer questions and interests**, broken down by region and model. This insight could guide product design, marketing, and feature rollouts.  
+
+Over time, with **machine learning and unsupervised analysis**, the system could surface hidden patterns in customer needs and behaviors, providing VW with a sharper competitive edge.  
+
+In short: ASK/CKA was born from a simple frustration as a customer — and transformed into a vision for a tool that helps **sales advisors shine, customers feel confident, and VW gain actionable business intelligence.**  
+
+---
 ## What is this project about?
 
 The Car Knowledge Assistant (CKA) is a **GenAI-driven knowledge tool** designed to support the automotive sales and service process.  

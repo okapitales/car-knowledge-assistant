@@ -3,7 +3,7 @@ import requests
 
 st.set_page_config(page_title="Car Knowledge Assistant", page_icon="🚗")
 
-API_URL = "http://localhost:8000"  # Change when deployed
+API_URL = "https://automotive-sales-knowledge-app.streamlit.app/"  # Change when deployed
 
 st.title("🚗 Car Knowledge Assistant (VW ID.4)")
 st.markdown("Ask questions about VW cars and get instant, manual-based answers.")
